@@ -37,10 +37,6 @@ def reconstruct_file(file_metadata: FileChunksMetadata, remove: bool = False) ->
         for chunk_index in range(file_metadata.chunk_count):
             chunk_path = file_metadata.get_chunk_path(chunk_index)
 
-            # TODO this is bad
-            if chunk_path is None:
-                break
-
             with open(chunk_path, 'rb') as chunk_file:
                 chunk = chunk_file.read()
                 file.write(chunk)
